@@ -276,7 +276,7 @@ export default function Header() {
           {/* <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" /> */}
           <HolidayOrnament />
         </UniIcon>
-        <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12, }}>
+        <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12 }}>
           <strong>ETH</strong> 1574.248
         </div>
         <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12 }}>
