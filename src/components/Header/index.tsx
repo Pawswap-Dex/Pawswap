@@ -25,6 +25,8 @@ import Web3Status from '../Web3Status'
 import HolidayOrnament from './HolidayOrnament'
 import NetworkSelector from './NetworkSelector'
 
+import React, { useEffect, useState } from 'react';
+
 const HeaderFrame = styled.div<{ showBackground: boolean }>`
   display: grid;
   grid-template-columns: 120px 1fr 120px;
@@ -262,10 +264,66 @@ export default function Header() {
 
   const scrollY = useScrollPosition()
 
+  const [token0Price, setToken0Price] = useState("-");
+  const [token1Price, setToken1Price] = useState("-");
+  const [token0Name, setToken0Name] = useState("");
+  const [token1Name, setToken1Name] = useState("");
+
+
+
+  const getherPrices = async () => {
+    try {
+      await fetch(
+        `http://pricemonica.com/openapi/eth/tokeninfo?token=0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
+          },
+          mode: 'cors',
+          method: 'GET'
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setToken0Price(data.priceUSD);
+          setToken0Name(data.name);
+        });
+
+
+    //   await fetch(
+    //     `http://pricemonica.com/openapi/eth/tokeninfo?token=0x9813037ee2218799597d83d4a5b6f3b6778218d9`,
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Accept: "application/json",
+    //       },
+    //     }
+    //   )
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       setToken1Price(data.priceUSD);
+    //       setToken1Name(data.name);
+    //     });
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
+
+  useEffect(() => {
+    // getherPrices();
+  }, [])
+
   const {
     infoLink,
     nativeCurrency: { symbol: nativeCurrencySymbol },
   } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
+
+
+
 
   return (
     <HeaderFrame showBackground={scrollY > 45}>
@@ -276,12 +334,12 @@ export default function Header() {
           {/* <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" /> */}
           <HolidayOrnament />
         </UniIcon>
-        <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12 }}>
-          <strong>ETH</strong> 1574.248
+        {/* <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12 }}>
+          <strong>{token0Name}</strong> {token0Price}
         </div>
         <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12 }}>
-          <strong>PAW</strong> 0.000043728697345
-        </div>
+          <strong>{token1Name}</strong> {token1Price}
+        </div> */}
       </Title>
 
       <HeaderLinks>
