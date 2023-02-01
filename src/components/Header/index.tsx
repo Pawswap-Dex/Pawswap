@@ -219,7 +219,7 @@ const StyledNavLink = styled(NavLink).attrs({
 
 const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName,
-})<{ isActive?: boolean }>`
+}) <{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
   border-radius: 3rem;
@@ -270,13 +270,20 @@ export default function Header() {
   return (
     <HeaderFrame showBackground={scrollY > 45}>
       <ClaimModal />
-      <Title href=".">
+      <Title href="." style={{ textDecoration: "none" }}>
         <UniIcon>
           <img src={Logo} alt="logo" width="29px" height="100%" title="logo" style={{ opacity: 0.7 }} />
           {/* <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" /> */}
           <HolidayOrnament />
         </UniIcon>
+        <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12, }}>
+          <strong>ETH</strong> 1574.248
+        </div>
+        <div style={{ marginLeft: 10, color: "white", textDecoration: "none", fontSize: 12 }}>
+          <strong>PAW</strong> 0.000043728697345
+        </div>
       </Title>
+
       <HeaderLinks>
         <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
           <Trans>Swap</Trans>
@@ -294,7 +301,7 @@ export default function Header() {
         >
           <Trans>Provide Liquidity</Trans>
         </StyledNavLink>
-        
+
       </HeaderLinks>
 
       <HeaderControls>
