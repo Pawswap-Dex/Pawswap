@@ -2,7 +2,7 @@
   "name": "@uniswap/widgets",
   "version": "0.0.14-beta",
   "description": "Uniswap Interface",
-  "homepage": "https://pawdex-app-iusth.ondigitalocean.app/",
+  "homepage": ".",
   "type": "module",
   "files": [
     "lib",
