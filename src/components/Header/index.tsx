@@ -314,7 +314,7 @@ export default function Header() {
   }
 
   useEffect(() => {
-    // getherPrices();
+    getherPrices();
   }, [])
 
   const {

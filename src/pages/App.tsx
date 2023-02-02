@@ -90,6 +90,9 @@ export default function App() {
             <Suspense fallback={<Loader />}>
               <Switch>
                 {/* <Route strict path="/vote" component={Vote} /> */}
+                <Route exact strict path="/">
+                  <Redirect to="/swap" />
+                </Route>
                 <Route exact strict path="/create-proposal">
                   <Redirect to="/vote/create-proposal" />
                 </Route>
