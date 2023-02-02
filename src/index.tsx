@@ -8,7 +8,7 @@ import { MulticallUpdater } from 'lib/state/multicall'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 import { createWeb3ReactRoot, Web3ReactProvider } from 'web3-react-core'
 
 import Blocklist from './components/Blocklist'
@@ -50,7 +50,7 @@ function Updaters() {
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <LanguageProvider>
           <Web3ReactProvider getLibrary={getLibrary}>
             <Web3ProviderNetwork getLibrary={getLibrary}>
@@ -64,7 +64,7 @@ ReactDOM.render(
             </Web3ProviderNetwork>
           </Web3ReactProvider>
         </LanguageProvider>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </StrictMode>,
   document.getElementById('root')
