@@ -253,7 +253,7 @@ export default function CurrencyInputPanel({
                       ? currency.symbol.slice(0, 4) +
                         '...' +
                         currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                      : currency?.symbol) || <Trans>Swap To</Trans>}
+                      : currency?.symbol) || <Trans>Select Token</Trans>}
                   </StyledTokenName>
                 )}
               </RowFixed>
