@@ -25,7 +25,7 @@ const ActiveRowLinkList = styled.div`
   padding: 0 8px;
   & > a {
     align-items: center;
-    color: ${({ theme }) => theme.text2};
+    color: ${({ theme }) => theme.text1};
     display: flex;
     flex-direction: row;
     font-size: 14px;
@@ -48,7 +48,7 @@ const ActiveRowWrapper = styled.div`
   width: 100%;
 `
 const FlyoutHeader = styled.div`
-  color: ${({ theme }) => theme.text2};
+  color: ${({ theme }) => theme.text1};
   font-weight: 400;
 `
 const FlyoutMenu = styled.div`
@@ -64,6 +64,7 @@ const FlyoutMenu = styled.div`
   padding: 16px;
   position: absolute;
   top: 64px;
+  color: #000000;
   width: 272px;
   z-index: 99;
   & > *:not(:last-child) {
@@ -314,7 +315,7 @@ export default function NetworkSelector() {
       </SelectorControls>
       {open && (
         <FlyoutMenu onMouseLeave={toggle}>
-          <FlyoutHeader>
+          <FlyoutHeader style={{ color: "black" }}>
             <Trans>Select a network</Trans>
           </FlyoutHeader>
           <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.MAINNET} />

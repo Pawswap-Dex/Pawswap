@@ -20,6 +20,7 @@ import { PositionDetails } from 'types/position'
 import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
 import CTACards from './CTACards'
 import { LoadingRows } from './styleds'
+import InboxIcon from '../../assets/images/inbox.png'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 870px;
@@ -105,8 +106,22 @@ const MainContentWrapper = styled.main`
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  box-shadow:  20px 20px 60px #bd7a2c,
-             -20px -20px 60px #ffa63c;
+  // box-shadow:  20px 20px 60px #bd7a2c,
+  //            -20px -20px 60px #ffa63c;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  color: rgb(255, 255, 255);
+  box-shadow: rgb(254, 49, 60) 5px 5px 0px -2px;
+  padding: 18px;
+  border-width: initial;
+  border-style: initial;
+  border-color: #1C1C1C;
+  border-image: initial;
+  outline: 0px;
+  // background: #1C1C1C;
+  transition: all 0.35s ease 0s;
 `
 
 function PositionsLoadingPlaceholder() {
@@ -225,8 +240,9 @@ export default function Pool() {
               ) : (
                 <NoLiquidity>
                   <ThemedText.Body color={theme.text3} textAlign="center">
-                    <Inbox size={48} strokeWidth={1} style={{ marginBottom: '.5rem' }} />
-                    <div>
+                    {/* <Inbox size={48} strokeWidth={1} style={{ marginBottom: '.5rem' }} /> */}
+                   <img style={{ height: 50, marginBottom: 10 }} src={InboxIcon} alt="inbox" />
+                    <div style={{ color: "black" }}>
                       <Trans>Your active V3 liquidity positions will appear here.</Trans>
                     </div>
                   </ThemedText.Body>

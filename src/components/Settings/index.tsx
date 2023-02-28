@@ -21,7 +21,7 @@ import QuestionHelper from '../QuestionHelper'
 import { RowBetween, RowFixed } from '../Row'
 import Toggle from '../Toggle'
 import TransactionSettings from '../TransactionSettings';
-import SettingsIcon from  '../../assets/images/settings.png';
+import SettingsIcon from  '../../assets/images/sett.png';
 
 const StyledMenuIcon = styled(Settings)`
   height: 20px;

@@ -35,15 +35,16 @@ export default function SwapHeader({ allowedSlippage }: { allowedSlippage: Perce
     <StyledSwapHeader>
       <RowBetween>
         <RowFixed>
-          <ThemedText.Black fontWeight={500} fontSize={16} style={{ marginRight: '8px' }}>
-            <Trans>Swap From</Trans>
+          <ThemedText.Black fontWeight={500} fontSize={16} style={{ marginRight: '8px', color: 'black' }}>
+            <Trans>Trade</Trans>
+            <HeaderElement >
+              <NetworkSelector />
+            </HeaderElement>
+            <SettingsTab placeholderSlippage={allowedSlippage} />
           </ThemedText.Black>
         </RowFixed>
         <RowFixed>
-          <HeaderElement >
-            <NetworkSelector />
-          </HeaderElement>
-          <SettingsTab placeholderSlippage={allowedSlippage} />
+
         </RowFixed>
       </RowBetween>
     </StyledSwapHeader>

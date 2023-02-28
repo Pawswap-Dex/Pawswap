@@ -167,7 +167,7 @@ export default function SwapDetailsDropdown({
                 />
               </LoadingOpacityContainer>
             ) : loading || syncing ? (
-              <ThemedText.Main fontSize={14}>
+              <ThemedText.Main fontSize={14} style={{ color: "black" }}>
                 <Trans>Fetching best price...</Trans>
               </ThemedText.Main>
             ) : null}

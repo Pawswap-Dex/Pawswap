@@ -73,7 +73,7 @@ const HeaderControls = styled.div`
 const HeaderElement = styled.div`
   display: flex;
   align-items: center;
-
+  color: white;
   &:not(:first-child) {
     margin-left: 0.5em;
   }
@@ -215,7 +215,7 @@ const StyledNavLink = styled(NavLink).attrs({
 
   :hover,
   :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+    // color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 `
 
@@ -264,49 +264,43 @@ export default function Header() {
 
   const scrollY = useScrollPosition()
 
-  const [token0Price, setToken0Price] = useState("-");
-  const [token1Price, setToken1Price] = useState("-");
-  const [token0Name, setToken0Name] = useState("");
-  const [token1Name, setToken1Name] = useState("");
+  const [token1Price, setTokenPrice] = useState("");
 
+  function toFixed(x: any) {
+    if (Math.abs(x) < 1.0) {
+      const e = parseInt(x.toString().split('e-')[1]);
+      if (e) {
+          x *= Math.pow(10,e-1);
+          x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
+      }
+    } else {
+      let e = parseInt(x.toString().split('+')[1]);
+      if (e > 20) {
+          e -= 20;
+          x /= Math.pow(10,e);
+          x += (new Array(e+1)).join('0');
+      }
+    }
+    return x;
+  }
 
 
   const getherPrices = async () => {
     try {
       await fetch(
-        `http://pricemonica.com/openapi/eth/tokeninfo?token=0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce`,
+        `https://pricemonica.com/openapi/dex/pairinfo?pair=0x0dba3dfee43d9b6450c716c58fdae8d3be37fdc9&chain=ether`,
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-cache'
+            "Content-Type": "application/json",
+            Accept: "application/json",
           },
-          mode: 'cors',
-          method: 'GET'
         }
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          setToken0Price(data.priceUSD);
-          setToken0Name(data.name);
+          // console.log(data.data[0]);
+          setTokenPrice(Number(toFixed(data.data[0].price)).toFixed(12));
         });
-
-
-    //   await fetch(
-    //     `http://pricemonica.com/openapi/eth/tokeninfo?token=0x9813037ee2218799597d83d4a5b6f3b6778218d9`,
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Accept: "application/json",
-    //       },
-    //     }
-    //   )
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(data);
-    //       setToken1Price(data.priceUSD);
-    //       setToken1Name(data.name);
-    //     });
     } catch (error) {
       console.log(error)
     }
@@ -330,7 +324,7 @@ export default function Header() {
       <ClaimModal />
       <Title href="." style={{ textDecoration: "none" }}>
         <UniIcon>
-          <img src={Logo} alt="logo" width="29px" height="100%" title="logo" style={{ opacity: 0.7 }} />
+          <img src={Logo} alt="logo" width="45px" height="100%" title="logo" style={{ opacity: 0.7 }} />
           {/* <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" /> */}
           <HolidayOrnament />
         </UniIcon>
@@ -383,6 +377,10 @@ export default function Header() {
               <CardNoise />
             </UNIWrapper>
           )}
+          <div style={{ padding: 5, borderRadius: 30, display: "flex", flexDirection: "row", alignItems: "center" }}>
+              <img src={Logo} style={{ height: 30, marginRight: 5 }} alt="" />
+            ${token1Price}
+          </div>
           <AccountElement active={!!account}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0, userSelect: 'none' }} pl="0.75rem" pr="0.5rem" fontWeight={500}>

@@ -61,7 +61,7 @@ const CurrencySelect = styled(ButtonGray)<{ visible: boolean; selected: boolean;
   background-color: ${({ selected, theme }) => (selected ? theme.bg2 : theme.primary1)};
   box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
-  color: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
+  // color: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
   cursor: pointer;
   // border-radius: 16px;
   outline: none;
@@ -117,7 +117,8 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   height: 35%;
 
   path {
-    stroke: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
+    // stroke: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
+    stroke: #FFFFFF;
     stroke-width: 1.5px;
   }
 `
@@ -153,6 +154,7 @@ const StyledBalanceMax = styled.button<{ disabled?: boolean }>`
 const StyledNumericalInput = styled(NumericalInput)<{ $loading: boolean }>`
   ${loadingOpacityMixin};
   text-align: right;
+  color: #000;
 `
 
 interface CurrencyInputPanelProps {
@@ -248,7 +250,7 @@ export default function CurrencyInputPanel({
                     {pair?.token0.symbol}:{pair?.token1.symbol}
                   </StyledTokenName>
                 ) : (
-                  <StyledTokenName className="token-symbol-container" active={Boolean(currency && currency.symbol)}>
+                  <StyledTokenName className="token-symbol-container" style={{ color: 'white' }} active={Boolean(currency && currency.symbol)}>
                     {(currency && currency.symbol && currency.symbol.length > 20
                       ? currency.symbol.slice(0, 4) +
                         '...' +
