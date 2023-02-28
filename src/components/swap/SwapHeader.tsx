@@ -37,11 +37,13 @@ export default function SwapHeader({ allowedSlippage }: { allowedSlippage: Perce
         <RowFixed>
           <ThemedText.Black fontWeight={500} fontSize={16} style={{ marginRight: '8px', color: 'black' }}>
             <Trans>Trade</Trans>
-            <HeaderElement >
+            
+          </ThemedText.Black>
+          <HeaderElement style={{ color: "black" }}>
+            |  &nbsp; &nbsp; Network: 
               <NetworkSelector />
             </HeaderElement>
             <SettingsTab placeholderSlippage={allowedSlippage} />
-          </ThemedText.Black>
         </RowFixed>
         <RowFixed>
 
