@@ -163,7 +163,7 @@ export default function TransactionSettings({ placeholderSlippage }: Transaction
     <AutoColumn gap="md">
       <AutoColumn gap="sm">
         <RowFixed>
-          <ThemedText.Black fontWeight={400} fontSize={14} color={theme.text2}>
+          <ThemedText.Black fontWeight={400} fontSize={14} color={theme.text1}>
             <Trans>Slippage tolerance</Trans>
           </ThemedText.Black>
           <QuestionHelper
@@ -232,7 +232,7 @@ export default function TransactionSettings({ placeholderSlippage }: Transaction
       {showCustomDeadlineRow && (
         <AutoColumn gap="sm">
           <RowFixed>
-            <ThemedText.Black fontSize={14} fontWeight={400} color={theme.text2}>
+            <ThemedText.Black fontSize={14} fontWeight={400} color={theme.text1}>
               <Trans>Transaction deadline</Trans>
             </ThemedText.Black>
             <QuestionHelper

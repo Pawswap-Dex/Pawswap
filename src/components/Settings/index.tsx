@@ -96,6 +96,7 @@ const MenuFlyout = styled.span`
   top: 2rem;
   right: 0rem;
   z-index: 100;
+  color: black;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     min-width: 18.125rem;
@@ -204,7 +205,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
             {chainId && AUTO_ROUTER_SUPPORTED_CHAINS.includes(chainId) && (
               <RowBetween>
                 <RowFixed>
-                  <ThemedText.Black fontWeight={400} fontSize={14} color={theme.text2}>
+                  <ThemedText.Black fontWeight={400} fontSize={14} color={theme.text1}>
                     <Trans>Auto Router API</Trans>
                   </ThemedText.Black>
                   <QuestionHelper text={<Trans>Use the Uniswap Labs API to get faster quotes.</Trans>} />
@@ -224,7 +225,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
             )}
             <RowBetween>
               <RowFixed>
-                <ThemedText.Black fontWeight={400} fontSize={14} color={theme.text2}>
+                <ThemedText.Black fontWeight={400} fontSize={14} color={theme.text1}>
                   <Trans>Expert Mode</Trans>
                 </ThemedText.Black>
                 <QuestionHelper
