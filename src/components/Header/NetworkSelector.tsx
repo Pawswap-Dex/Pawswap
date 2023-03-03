@@ -328,9 +328,9 @@ export default function NetworkSelector() {
             <Logo src={ShibeLogo} />
             <NetworkLabel style={{ color: "#747474" }}>Shibarium</NetworkLabel>
           </FlyoutRow>
-          <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.POLYGON} />
+          {/* <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.POLYGON} />
           <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.OPTIMISM} />
-          <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.ARBITRUM_ONE} />
+          <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.ARBITRUM_ONE} /> */}
        
        
         </FlyoutMenu>
