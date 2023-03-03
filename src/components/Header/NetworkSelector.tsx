@@ -15,6 +15,7 @@ import styled from 'styled-components/macro'
 import { ExternalLink, MEDIA_WIDTHS } from 'theme'
 import { replaceURLParam } from 'utils/routes'
 import ShibeLogo from '../../assets/images/shibe.png';
+import BNBLogo from '../../assets/images/bnb.png';
 
 import { useAppDispatch } from '../../state/hooks'
 import { switchToNetwork } from '../../utils/switchToNetwork'
@@ -319,6 +320,10 @@ export default function NetworkSelector() {
             <Trans>Select a network</Trans>
           </FlyoutHeader>
           <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.MAINNET} />
+          <FlyoutRow onClick={() => null} active={false}>
+            <Logo src={BNBLogo} />
+            <NetworkLabel style={{ color: "#747474" }}>BNB Smart Chain (Coming Soon)</NetworkLabel>
+          </FlyoutRow>
           <FlyoutRow onClick={() => null} active={false}>
             <Logo src={ShibeLogo} />
             <NetworkLabel style={{ color: "#747474" }}>Shibarium</NetworkLabel>
